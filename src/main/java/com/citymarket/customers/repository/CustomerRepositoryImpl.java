@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class CustomerRepositorylmpl implements CustomerRepository {
+public class CustomerRepositoryImpl implements CustomerRepository {
 
     //Encuentra un cliente por su id
     public Optional<Customer> findById(int id) {

@@ -3,7 +3,7 @@ package com.citymarket.customers.service;
 import com.citymarket.customers.model.Customer;
 import com.citymarket.customers.dto.CustomerDTO;
 import com.citymarket.customers.repository.CustomerRepository;
-import com.citymarket.customers.repository.CustomerRepositorylmpl;
+import com.citymarket.customers.repository.CustomerRepositoryImpl;
 import com.citymarket.authService.AuthService;
 
 import java.util.Optional;
@@ -14,7 +14,7 @@ public class CustomerService {
     private AuthService authService;
 
     public CustomerService(){
-        this.customerRepository = new CustomerRepositorylmpl();
+        this.customerRepository = new CustomerRepositoryImpl();
         this.authService = new AuthService();
 
     }

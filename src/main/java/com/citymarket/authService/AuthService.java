@@ -1,7 +1,7 @@
 package com.citymarket.authService;
 
 import com.citymarket.customers.repository.CustomerRepository;
-import com.citymarket.customers.repository.CustomerRepositorylmpl;
+import com.citymarket.customers.repository.CustomerRepositoryImpl;
 import com.citymarket.customers.model.Customer;
 
 import java.security.MessageDigest;
@@ -13,7 +13,7 @@ public class AuthService {
     private CustomerRepository customerRepository;
 
     public AuthService(){
-        this.customerRepository = new CustomerRepositorylmpl();
+        this.customerRepository = new CustomerRepositoryImpl();
     }
 
     //Autenticamos el usuario
