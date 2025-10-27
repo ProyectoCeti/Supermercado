@@ -132,7 +132,7 @@ public class ProductsRepositoryImpl implements ProductsRepository {
     //Metodo para actualizar un producto
     public Products update(Products products){
 
-        final String update = "UPDATE productos SET nameProduct = ?, SET cantidad = ?, SET descripcion = ?, SET precio = ?";
+        final String update = "UPDATE productos SET nameProduct = ?, cantidad = ?, descripcion = ?, precio = ? WHERE id = ?";
         try{Connection connection = new ConnectionDB().getConnection();//Establecemos la conexion a la base de datos
             PreparedStatement preparedStatement = connection.prepareStatement(update); //Creamos un preparedStatement y le pasamos el update
 
