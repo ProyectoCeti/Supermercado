@@ -78,7 +78,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         final String Update = "INSERT INTO Customer(name, addres, email, password, saldo) Values(?,?,?,?,?)";
         try{ Connection connection = new ConnectionDB().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(Update, Statement.RETURN_GENERATED_KEYS);//Crea un preparedStatement para realizar las consultas de una forma segura
-            int ClienteAgregado = preparedStatement.executeUpdate();//Guarda la query y la ejecuta
+            int ClienteAgregado = preparedStatement.executeUpdate();//Guarda la update y la ejecuta
 
             preparedStatement.setString(1, customer.getName());
             preparedStatement.setString(2, customer.getAddress());
