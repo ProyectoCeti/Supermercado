@@ -79,7 +79,7 @@ public class ProvidersRepositoryImpl implements ProvidersRepository {
     //Agregamos un proveedor nuevo
     public Provider save(Provider provider){
 
-        final String update = "INSET INTO Proveedores(nameProvider, email, telefono, status) VALUES (?, ?, ?, ?)";
+        final String update = "INSERT INTO Proveedores(nameProvider, email, telefono, status) VALUES (?, ?, ?, ?)";
         try{Connection connetion = new ConnectionDB().getConnection(); //Establecemos la conexion a la base de datos
             PreparedStatement preparedStatement = connetion.prepareStatement(update); //Le pasamos la update y creamos un preparedStatement
             int ProvedorAgregado = preparedStatement.executeUpdate(); //Guarda y ejecuta la update
@@ -108,7 +108,7 @@ public class ProvidersRepositoryImpl implements ProvidersRepository {
 
     public Provider update(Provider provider){
 
-        final String update = "UPDATE SET nameProvider = ?, email = ?, telefono = ?, status = ? WHERE id = ?";
+        final String update = "UPDATE Proveedores SET nameProvider = ?, email = ?, telefono = ?, status = ? WHERE id = ?";
         try{Connection connetion = new ConnectionDB().getConnection(); //Establecemos la conexion a la base de datos
             PreparedStatement preparedStatement = connetion.prepareStatement(update); //Le pasamos la update y crea un preparedStatement
             int ProvedorActualizado = preparedStatement.executeUpdate(); //Guarda y ejecuta la update

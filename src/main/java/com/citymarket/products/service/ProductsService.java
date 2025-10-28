@@ -1,7 +1,6 @@
 package com.citymarket.products.service;
 
 import com.citymarket.products.repository.ProductsRepository;
-import com.citymarket.products.repository.ProductsRepositoryImpl;
 import com.citymarket.products.model.Products;
 import com.citymarket.products.dto.ProductsDTO;
 

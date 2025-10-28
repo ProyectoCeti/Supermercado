@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="772f7f34-6775-4488-8b00-8723f2f301c0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/products/controller/ProductsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/providers/controller/ProviderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/providers/service/ProviderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/repository/CustomerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/repository/CustomerRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/products/repository/ProductsRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/products/repository/ProductsRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/providers/repository/ProvidersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/providers/repository/ProvidersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/providers/repository/ProvidersRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/providers/repository/ProvidersRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/products/service/ProductsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/products/service/ProductsService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +19,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="package-info" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="package-info" />
       </list>
     </option>
   </component>
