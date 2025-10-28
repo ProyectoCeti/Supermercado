@@ -84,6 +84,7 @@ public class CustomerService {
         //Encriptar contraseña y guardamos la contraseña
         String encriptedPassword = authService.encryptPassword(password);
 
+        //Agregamos un cliente
         Customer newCustomer = new Customer(
             0, //Le pasamos un id temporal
             name,

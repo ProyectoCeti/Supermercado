@@ -165,6 +165,8 @@ public class ProductsRepositoryImpl implements ProductsRepository {
         try{Connection connection = new ConnectionDB().getConnection();//Establecemos la conexion a la base de datos
             PreparedStatement preparedStatement = connection.prepareStatement(update);//Crea un objeto preparedStatement y le pasamos la update
 
+            preparedStatement.setInt(1, id);
+
             int RegistroEliminado = preparedStatement.executeUpdate();//Guarda y ejecuta la update
             if(RegistroEliminado > 0){
                 System.out.println("Producto eliminado exitosamente");
@@ -182,7 +184,7 @@ public class ProductsRepositoryImpl implements ProductsRepository {
     public List<Products> findAllOrderByPrecioAsc(){
 
         List<Products> productsList = new ArrayList<>();
-        final String query = "SELECT * FROM productos ORDER Asc precio";
+        final String query = "SELECT * FROM productos ORDER BY precio ASC";
         try{Connection connection = new ConnectionDB().getConnection();//Establecemos una conexion con la base de datos
             PreparedStatement preparedStatement = connection.prepareStatement(query);//Creamos un preparedStatement y le pasamos la query
             ResultSet resultSet = preparedStatement.executeQuery();//Guarda y ejecuta la query
@@ -207,7 +209,7 @@ public class ProductsRepositoryImpl implements ProductsRepository {
     //Metodo para ver productos del mas caro al mas barato
     public List<Products> findAllOrderByPrecioDesc(){
         List<Products> productsList = new ArrayList<>();
-        final String query = "SELECT * FROM productos ORDER DESC precio";
+        final String query = "SELECT * FROM productos ORDER BY precio DESC";
         try{Connection connection = new ConnectionDB().getConnection();//Establecemos una conexion con la base de datos
             PreparedStatement preparedStatement = connection.prepareStatement(query);//Creamos un preparedStatement y le pasamos la query
             ResultSet resultSet = preparedStatement.executeQuery();//Guarda y ejecuta la query
