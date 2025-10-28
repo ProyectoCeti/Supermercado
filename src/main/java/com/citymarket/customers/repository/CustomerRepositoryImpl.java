@@ -1,8 +1,5 @@
 package com.citymarket.customers.repository;
 
-/*
- Implementación de la interfaz CustomerRepository usando JDBC
-*/
 import com.citymarket.connection.ConnectionDB;
 import com.citymarket.customers.model.Customer;
 
@@ -10,6 +7,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+/*
+ Implementación de la interfaz CustomerRepository usando JDBC
+*/
 
 public class CustomerRepositoryImpl implements CustomerRepository {
 
@@ -98,7 +99,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         }catch(SQLException e){
             System.out.println("Error al agregar Cliente: " +  e.getMessage());
         }
-        return customer; //Retornamos el cliente
+        return customer; //Retornamos el cliente vacio
     }
 
     //Actualizamos Datos de un cliente

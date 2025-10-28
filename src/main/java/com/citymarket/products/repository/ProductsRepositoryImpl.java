@@ -8,11 +8,15 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.List;
 
+/*
+ Implementación de la interfaz CustomerRepository usando JDBC
+*/
+
 public class ProductsRepositoryImpl implements ProductsRepository {
 
     //Metodo para buscar un producto por su nombre
     public Optional<Products> findByNombre(String nameProduct){
-        final String query = "SELECT * FROM productos WHERE name = ?";
+        final String query = "SELECT * FROM Productos WHERE name = ?";
         try{Connection connection = new ConnectionDB().getConnection();//Creamos una nueva instancia para despues llamar al metodo getConnection
             PreparedStatement preparedStatement = connection.prepareStatement(query);//Crea un preparedStatement para realizar las consultas de una forma segura
             preparedStatement.setString(1, nameProduct);//Le pasamos el nombre como el valor principal
@@ -41,7 +45,7 @@ public class ProductsRepositoryImpl implements ProductsRepository {
     public List<Products> search(String searchTerm){
         List<Products> products = new ArrayList<>();
 
-        final String query = "SELECT * FROM productos WHERE nameProduct LIKE ? OR descripcion LIKE ?";
+        final String query = "SELECT * FROM Productos WHERE nameProduct LIKE ? OR descripcion LIKE ?";
         try{Connection connection = new ConnectionDB().getConnection();//Creamos una nueva instancia para despues llamar al metodo getConnection
             PreparedStatement preparedStatement = connection.prepareStatement(query);//Crea un preparedStatement para realizar las consultas de una forma segura
 
@@ -75,7 +79,7 @@ public class ProductsRepositoryImpl implements ProductsRepository {
     public List<Products> findAll(){
         List<Products> products = new ArrayList<>();
 
-        final String query = "SELECT * FROM productos";
+        final String query = "SELECT * FROM Productos";
 
         try{Connection connection = new ConnectionDB().getConnection();//Establecemos la conexion con la base de datos
             PreparedStatement preparedStatement = connection.prepareStatement(query);//Creamos un preparedStatement para ejecutar las query
@@ -132,7 +136,7 @@ public class ProductsRepositoryImpl implements ProductsRepository {
     //Metodo para actualizar un producto
     public Products update(Products products){
 
-        final String update = "UPDATE productos SET nameProduct = ?, cantidad = ?, descripcion = ?, precio = ? WHERE id = ?";
+        final String update = "UPDATE Productos SET nameProduct = ?, cantidad = ?, descripcion = ?, precio = ? WHERE id = ?";
         try{Connection connection = new ConnectionDB().getConnection();//Establecemos la conexion a la base de datos
             PreparedStatement preparedStatement = connection.prepareStatement(update); //Creamos un preparedStatement y le pasamos el update
 
@@ -161,7 +165,7 @@ public class ProductsRepositoryImpl implements ProductsRepository {
     //Metodo para eliminar un producto
     public boolean deleteById(int id){
 
-        final String update = "DELETE FROM productos WHERE id = ?";
+        final String update = "DELETE FROM Productos WHERE id = ?";
         try{Connection connection = new ConnectionDB().getConnection();//Establecemos la conexion a la base de datos
             PreparedStatement preparedStatement = connection.prepareStatement(update);//Crea un objeto preparedStatement y le pasamos la update
 
@@ -184,7 +188,7 @@ public class ProductsRepositoryImpl implements ProductsRepository {
     public List<Products> findAllOrderByPrecioAsc(){
 
         List<Products> productsList = new ArrayList<>();
-        final String query = "SELECT * FROM productos ORDER BY precio ASC";
+        final String query = "SELECT * FROM Productos ORDER BY precio ASC";
         try{Connection connection = new ConnectionDB().getConnection();//Establecemos una conexion con la base de datos
             PreparedStatement preparedStatement = connection.prepareStatement(query);//Creamos un preparedStatement y le pasamos la query
             ResultSet resultSet = preparedStatement.executeQuery();//Guarda y ejecuta la query
@@ -209,7 +213,7 @@ public class ProductsRepositoryImpl implements ProductsRepository {
     //Metodo para ver productos del mas caro al mas barato
     public List<Products> findAllOrderByPrecioDesc(){
         List<Products> productsList = new ArrayList<>();
-        final String query = "SELECT * FROM productos ORDER BY precio DESC";
+        final String query = "SELECT * FROM Productos ORDER BY precio DESC";
         try{Connection connection = new ConnectionDB().getConnection();//Establecemos una conexion con la base de datos
             PreparedStatement preparedStatement = connection.prepareStatement(query);//Creamos un preparedStatement y le pasamos la query
             ResultSet resultSet = preparedStatement.executeQuery();//Guarda y ejecuta la query
