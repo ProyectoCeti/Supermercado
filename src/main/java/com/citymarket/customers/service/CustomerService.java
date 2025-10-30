@@ -6,6 +6,7 @@ import com.citymarket.customers.repository.CustomerRepository;
 import com.citymarket.customers.repository.CustomerRepositoryImpl;
 import com.citymarket.authService.AuthService;
 
+import javax.swing.*;
 import java.util.Optional;
 
 public class CustomerService {
@@ -33,11 +34,29 @@ public class CustomerService {
 
         //Verificamos que primero este el arroba antes del punto
         int atIndex = email.indexOf("@");
-        int dotIndex = email.indexOf(".");
-        boolean correctOrder = atIndex > 0 &&  dotIndex > atIndex + 1;
+        int dotIndex = email.lastIndexOf(".");
+        boolean correctOrder = atIndex > 0 &&  dotIndex > atIndex + 1 && dotIndex < email.length() -2;
 
-        //Valida que cumpla con el resto de validaciones
-        boolean isValid = hasASteal && hasPoint && eldestAsix && correctOrder;
+        // No debe haber espacios
+        boolean noSpaces = !email.contains(" ");
+
+        // Solo debe haber un @
+        boolean singleAt = email.indexOf("@") == email.lastIndexOf("@");
+
+        System.out.println("Email: " + email);
+        System.out.println("hasASteal: " + hasASteal);
+        System.out.println("hasPoint: " + hasPoint);
+        System.out.println("eldestAsix: " + eldestAsix);
+        System.out.println("atIndex: " + atIndex);
+        System.out.println("dotIndex: " + dotIndex);
+        System.out.println("correctOrder: " + correctOrder);
+        System.out.println("noSpaces: " + noSpaces);
+        System.out.println("singleAt: " + singleAt);
+        System.out.println("email.length(): " + email.length());
+        System.out.println("dotIndex < email.length() - 2: " + (dotIndex < email.length() - 2));
+
+        // Valida que cumpla con todas las validaciones
+        boolean isValid = hasASteal && hasPoint && eldestAsix && correctOrder && noSpaces && singleAt;
 
         //Si email no es valido mostramos un mensaje
         if(!isValid){
@@ -69,15 +88,17 @@ public class CustomerService {
     }
 
     //Metodo que recibe datos de un nuevo cliente y retorna un object
-    public Object save(String name, String address, String email, String password){
+    public CustomerDTO save(String name, String email, String address, String password){
 
         //Validamos el email
         if(!isValidEmail(email)){
+            JOptionPane.showMessageDialog(null,"Email Invalido");
             throw new IllegalArgumentException("Email invalido.");
         }
 
         //Validamos la contraseña
         if(!isValidPassword(password)){
+            JOptionPane.showMessageDialog(null, "Contraseña invalida.");
             throw new IllegalArgumentException("Contraseña invalida.");
         }
 
@@ -88,8 +109,8 @@ public class CustomerService {
         Customer newCustomer = new Customer(
             0, //Le pasamos un id temporal
             name,
-            address,
             email,
+            address,
             encriptedPassword,
             null, //Saldo
             null, //createdAt

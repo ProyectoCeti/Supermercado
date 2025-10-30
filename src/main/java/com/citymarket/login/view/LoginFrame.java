@@ -1,5 +1,8 @@
 package com.citymarket.login.view;
 
+import com.citymarket.CityMarketFrame;
+import com.citymarket.customers.controller.CustomerController;
+import com.citymarket.customers.service.CustomerService;
 import com.citymarket.customers.view.RegisterCustomerFrame;
 
 import java.util.*;
@@ -13,8 +16,10 @@ public class LoginFrame extends JFrame {
     JLabel labelImage, label, label2, lblCopyright;
     JTextField textUser, textPassword;
     JButton buttonRegister, buttonLogin;
+    CustomerService customerService;
 
     public LoginFrame() {
+        this.customerService = new CustomerService();
         this.setSize(600, 700);
         this.setTitle("Mi tienda - Sistema de Acceso");
         this.setLayout(new BorderLayout());
@@ -143,6 +148,25 @@ public class LoginFrame extends JFrame {
         buttonLogin.setFont(new Font("Arial", Font.BOLD, 14));
         buttonLogin.setBorderPainted(false);
         buttonLogin.setFocusPainted(false);
+        buttonLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String email = textUser.getText();
+                String password = textPassword.getText();
+
+                if(email.isEmpty() || email.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Por favor llene todos los campos");
+                    return;
+                }
+                else{
+                    CustomerController c = new CustomerController(customerService);
+                    c.login(email, password);
+                    JOptionPane.showMessageDialog(null, "Cargando Dashboard");
+                    CityMarketFrame v1 = new CityMarketFrame();
+                    v1.setVisible(true);
+                }
+            }
+        });
         buttonLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
         panelPrincipal.add(buttonLogin);
 

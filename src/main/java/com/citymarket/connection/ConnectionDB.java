@@ -11,7 +11,7 @@ public class ConnectionDB {
     public ConnectionDB() {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");//Le pasamos el driver
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/citymarket","root","");//Le pasamos la direccion y el usuario
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root","");//Le pasamos la direccion y el usuario
 
         }catch(Exception e){
             System.out.println("Error: " + e.getMessage());

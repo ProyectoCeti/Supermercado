@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="772f7f34-6775-4488-8b00-8723f2f301c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/admin/service/AdminService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/view/RegisterCustomerFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/CityMarket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/CityMarket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/admin/repository/AdminRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/login/view/loginPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/login/view/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/CityMarketFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/CityMarketFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/authService/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/authService/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/connection/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/connection/ConnectionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/dto/CustomerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/dto/CustomerDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/repository/CustomerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/repository/CustomerRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/view/RegisterCustomerFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/customers/view/RegisterCustomerFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/citymarket/login/view/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/citymarket/login/view/LoginFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,24 +43,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.CityMarket.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "C:/Users/Gerardo/IdeaProjects/CityMarket/src/main/java/org/example/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.CityMarket.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Gerardo/IdeaProjects/CityMarket/src/main/java/org/example/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Gerardo\IdeaProjects\CityMarket\src\main\resources\icons" />

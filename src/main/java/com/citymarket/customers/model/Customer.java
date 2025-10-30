@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
     private LocalDateTime updatedAt;
 
     //Constructor
-    public Customer(int id, String name, String address, String email, String password, BigDecimal saldo, LocalDateTime createdAt,  LocalDateTime updatedAt) {
+    public Customer(int id, String name, String email, String address, String password, BigDecimal saldo, LocalDateTime createdAt,  LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.address = address;

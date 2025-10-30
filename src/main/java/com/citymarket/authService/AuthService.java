@@ -4,6 +4,7 @@ import com.citymarket.customers.repository.CustomerRepository;
 import com.citymarket.customers.repository.CustomerRepositoryImpl;
 import com.citymarket.customers.model.Customer;
 
+import javax.swing.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
@@ -24,6 +25,7 @@ public class AuthService {
         if(customer != null && verifyPassword(password, customer.getPassword())){
             return customer; //Inicio de sesion exitoso
         }
+        JOptionPane.showMessageDialog(null, "No se encontro la cuenta o la contraseña es invalida.");
         return null; //Retornamos null
     }
 

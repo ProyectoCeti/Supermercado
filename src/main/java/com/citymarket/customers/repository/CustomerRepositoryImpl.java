@@ -16,7 +16,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     //Encuentra un cliente por su id
     public Optional<Customer> findById(int id) {
-        final String query = "SELECT * FROM Customer WHERE id = ?";
+        final String query = "SELECT * FROM customer WHERE id = ?";
         try{ Connection connection = new ConnectionDB().getConnection(); //Creamos una nueva instancia para despues llamar al metodo getConnection
             PreparedStatement preparedStatement = connection.prepareStatement(query);//Crea un preparedStatement para realizar las consultas de una forma segura
             preparedStatement.setInt(1, id); //Le pasamos el id como el valor principal
@@ -26,8 +26,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                 Customer customer = new Customer(
                     resultSet.getInt("id"),
                     resultSet.getString("name"),
-                    resultSet.getString("addres"),
                     resultSet.getString("email"),
+                    resultSet.getString("addres"),
                     resultSet.getString("password"),
                     resultSet.getBigDecimal("saldo"),
                     resultSet.getTimestamp("createdAt").toLocalDateTime(),
@@ -46,7 +46,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public List<Customer> findAllOrderedById(){
 
         List <Customer> customers = new ArrayList<>();
-        final String query = "SELECT * FROM Customer ORDER BY id";
+        final String query = "SELECT * FROM customer ORDER BY id";
 
         try{ Connection connection = new ConnectionDB().getConnection(); //Creamos una nueva instancia para despues llamar al metodo getConnection
         PreparedStatement preparedStatement = connection.prepareStatement(query);//Crea un preparedStatement para realizar las consultas de una forma segura
@@ -76,16 +76,17 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     public Customer save(Customer customer){
 
-        final String Update = "INSERT INTO Customer(name, addres, email, password, saldo) Values(?,?,?,?,?)";
+        final String Update = "INSERT INTO customer(name, addres, email, password, saldo) Values(?,?,?,?,?)";
         try{ Connection connection = new ConnectionDB().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(Update, Statement.RETURN_GENERATED_KEYS);//Crea un preparedStatement para realizar las consultas de una forma segura
-            int ClienteAgregado = preparedStatement.executeUpdate();//Guarda la update y la ejecuta
 
             preparedStatement.setString(1, customer.getName());
             preparedStatement.setString(2, customer.getAddress());
             preparedStatement.setString(3, customer.getEmail());
             preparedStatement.setString(4, customer.getPassword());
             preparedStatement.setBigDecimal(5, customer.getSaldo());
+
+            int ClienteAgregado = preparedStatement.executeUpdate();//Guarda la update y la ejecuta
 
             if(ClienteAgregado > 0){
                 ResultSet idGenerado = preparedStatement.getGeneratedKeys();//Obtenemos el id generado por MySQl
@@ -105,7 +106,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     //Actualizamos Datos de un cliente
     public Customer update(Customer customer){
 
-        final String Update = "Update Customer SET name = ?, addres = ?, email = ?, password = ?, saldo = ? WHERE id = ?";
+        final String Update = "Update customer SET name = ?, addres = ?, email = ?, password = ?, saldo = ? WHERE id = ?";
         try{ Connection connection = new ConnectionDB().getConnection(); //Establecemos la conexion con la base de datos
             PreparedStatement preparedStatement = connection.prepareStatement(Update); //Le pasamos la executeQuery y creamos un preparedStatement
 
@@ -136,7 +137,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     //Eliminamos un cliente
     public boolean deleteById(int id){
 
-        final String Update = "DELETE FROM Customer WHERE id = ?";
+        final String Update = "DELETE FROM customer WHERE id = ?";
         try{ Connection connection = new ConnectionDB().getConnection();//Establecemos la conexion con la base de datos
             PreparedStatement preparedStatement = connection.prepareStatement(Update);//Le pasamos la executeQuery y creamos un preparedStatement
 
@@ -159,7 +160,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
         List <Customer> customers = new ArrayList<>();
 
-        final String query = "SELECT * FROM Customer WHERE name LIKE ?";
+        final String query = "SELECT * FROM customer WHERE name LIKE ?";
         try {
             Connection connection = new ConnectionDB().getConnection(); //Creamos una nueva instancia para despues llamar al metodo getConnection
             PreparedStatement preparedStatement = connection.prepareStatement(query);//Crea un preparedStatement para realizar las consultas de una forma segura
@@ -187,7 +188,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     //Buscamos un cliente por su email
     public Optional<Customer> findByEmail(String email) {
-        final String query = "SELECT * FROM Customer WHERE email = ?";
+        final String query = "SELECT * FROM customer WHERE email = ?";
 
         try {
             Connection connection = new ConnectionDB().getConnection(); //Creamos una nueva instancia para despues llamar al metodo getConnection
