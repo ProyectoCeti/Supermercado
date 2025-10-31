@@ -5,13 +5,13 @@ import com.citymarket.customers.controller.CustomerController;
 import com.citymarket.customers.service.CustomerService;
 import com.citymarket.customers.view.RegisterCustomerFrame;
 
-import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class LoginFrame extends JFrame {
 
+    public String user;
     JPanel panelPrincipal, panelNorte, panelSur;
     JLabel labelImage, label, label2, lblCopyright;
     JTextField textUser, textPassword;
@@ -140,7 +140,7 @@ public class LoginFrame extends JFrame {
         panelPrincipal.add(Box.createVerticalStrut(35));
 
         //Botono para el incio de sesion
-        buttonLogin = new JButton("Inicar Sesion");
+        buttonLogin = new JButton("Iniciar Sesion");
         buttonLogin.setPreferredSize(new Dimension(200, 40));
         buttonLogin.setMaximumSize(new Dimension(200, 40));
         buttonLogin.setBackground(new Color(13, 138, 227));
@@ -151,8 +151,9 @@ public class LoginFrame extends JFrame {
         buttonLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String email = textUser.getText();
-                String password = textPassword.getText();
+                String email = textUser.getText().trim();
+                user = email;
+                String password = textPassword.getText().trim();
 
                 if(email.isEmpty() || email.isEmpty()){
                     JOptionPane.showMessageDialog(null, "Por favor llene todos los campos");
@@ -162,11 +163,12 @@ public class LoginFrame extends JFrame {
                     CustomerController c = new CustomerController(customerService);
                     c.login(email, password);
                     JOptionPane.showMessageDialog(null, "Cargando Dashboard");
-                    CityMarketFrame v1 = new CityMarketFrame();
+                    CityMarketFrame v1 = new CityMarketFrame(email);
                     v1.setVisible(true);
                 }
             }
         });
+
         buttonLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
         panelPrincipal.add(buttonLogin);
 
@@ -175,5 +177,9 @@ public class LoginFrame extends JFrame {
         lblCopyright.setFont(new Font("Arial", Font.PLAIN, 12));
         lblCopyright.setAlignmentX(Component.CENTER_ALIGNMENT);
         panelSur.add(lblCopyright);
+    }
+
+    public String transferDato(){
+        return user;
     }
 }

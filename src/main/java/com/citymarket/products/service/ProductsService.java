@@ -1,93 +1,93 @@
 package com.citymarket.products.service;
 
 import com.citymarket.products.repository.ProductsRepository;
+import com.citymarket.products.repository.ProductsRepositoryImpl;
 import com.citymarket.products.model.Products;
 import com.citymarket.products.dto.ProductsDTO;
-
-import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ProductsService {
 
-    private ProductsRepository productsRepositoryImpl;
+    private ProductsRepository productsRepository;
 
-    public ProductsService(ProductsRepository productsRepositoryImpl) {
-        this.productsRepositoryImpl = productsRepositoryImpl;
-
+    public ProductsService() {
+        this.productsRepository = new ProductsRepositoryImpl();
     }
 
-    //Metodos para validar un producto
-
-    //Validamos que se registre al menos un producto
-    public boolean isCantidadValid(int cantidad){
-        if(cantidad <= 0){
-            System.out.println("No puedes agregar 0 productos");
-            return false;
-        }
-        return true;
+    public boolean isCantidadValid(int cantidad) {
+        return cantidad > 0;
     }
 
-    //Validamos el precio de un producto
-    public boolean isPriceValid(BigDecimal price){
-        if(price == null){
-            System.out.println("No puedes agregar un producto sin precio");
-            return false;
-        }
-        else if(price.compareTo(BigDecimal.ZERO) <= 0){
-            System.out.println("No puedes agregar un producto con un preico menor o igual a 0");
-        }
-        return true;
+    public boolean isPriceValid(java.math.BigDecimal price) {
+        return price != null && price.compareTo(java.math.BigDecimal.ZERO) > 0;
     }
 
-    //Validamos que el nombre no este vacio
-    public boolean isNameValid(String nameProduct){
-        if(nameProduct == null || nameProduct.trim().isEmpty()){
-            System.out.println("No puedes agregar un producto sin nombre");
-            return false;
-        }
-        return true;
+    public boolean isNameValid(String nameProduct) {
+        return nameProduct != null && !nameProduct.trim().isEmpty();
     }
 
-    //Validamos que el producto tenga una descripcion
-    public boolean isDescriptionValid(String description){
-        if(description == null || description.trim().isEmpty()){
-            System.out.println("No puedes agregar un producto sin descripcion");
-            return false;
-        }
-        return true;
+    public boolean isDescriptionValid(String description) {
+        return description != null && !description.trim().isEmpty();
     }
 
-    //Agregamos un cliente verificando que se cumplan todas las validaciones
-    public ProductsDTO registerProducts(int id, String nameProduct, String description, BigDecimal price, int cantidad){
-        //Validaciones
-
-        if(!isCantidadValid(cantidad)){
+    public ProductsDTO registerProducts(int id, String nameProduct, String description, java.math.BigDecimal price, int cantidad) {
+        if (!isCantidadValid(cantidad)) {
             throw new IllegalArgumentException("Cantidad invalida.");
         }
-
-        if(!isNameValid(nameProduct)){
+        if (!isNameValid(nameProduct)) {
             throw new IllegalArgumentException("Nombre invalido.");
         }
-
-        if(!isDescriptionValid(description)){
+        if (!isDescriptionValid(description)) {
             throw new IllegalArgumentException("Descripcion invalida.");
         }
-
-        if(isPriceValid(price)){
+        if (!isPriceValid(price)) {
             throw new IllegalArgumentException("Precio invalido.");
         }
 
-        //Creamos y guardamos un producto
-        Products product = new Products(
-                id,
-                nameProduct.trim(),
-                description != null ? description.trim() : "",
-                price,
-                cantidad
-        );
-
-        Products productsSave = productsRepositoryImpl.save(product);
-
-        //Retornamos el dto
+        Products product = new Products(id, nameProduct.trim(), description.trim(), price, cantidad);
+        Products productsSave = productsRepository.save(product);
         return ProductsDTO.fromProducts(productsSave);
+    }
+
+    public List<ProductsDTO> findAll() {
+        List<Products> products = productsRepository.findAll();
+        return products.stream()
+                .map(ProductsDTO::fromProducts)
+                .collect(Collectors.toList());
+    }
+
+    public List<ProductsDTO> findByName(String name) {
+        List<Products> products = productsRepository.search(name);
+        return products.stream()
+                .map(ProductsDTO::fromProducts)
+                .collect(Collectors.toList());
+    }
+
+    public Optional<ProductsDTO> findById(int id) {
+        List<Products> allProducts = productsRepository.findAll();
+        return allProducts.stream()
+                .filter(product -> product.getId() == id)
+                .findFirst()
+                .map(ProductsDTO::fromProducts);
+    }
+
+    public List<ProductsDTO> findSimilarProducts(String name) {
+        return findByName(name);
+    }
+
+    public List<ProductsDTO> findAllOrderByPrecioAsc() {
+        List<Products> products = productsRepository.findAllOrderByPrecioAsc();
+        return products.stream()
+                .map(ProductsDTO::fromProducts)
+                .collect(Collectors.toList());
+    }
+
+    public List<ProductsDTO> findAllOrderByPrecioDesc() {
+        List<Products> products = productsRepository.findAllOrderByPrecioDesc();
+        return products.stream()
+                .map(ProductsDTO::fromProducts)
+                .collect(Collectors.toList());
     }
 }

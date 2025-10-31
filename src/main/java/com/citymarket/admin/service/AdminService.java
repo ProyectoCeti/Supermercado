@@ -15,6 +15,4 @@ public class AdminService {
         this.customerRepository =  customerRepository;
         this.providerRepository = providerRepository;
     }
-
-
 }

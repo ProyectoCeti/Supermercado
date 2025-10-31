@@ -43,18 +43,6 @@ public class CustomerService {
         // Solo debe haber un @
         boolean singleAt = email.indexOf("@") == email.lastIndexOf("@");
 
-        System.out.println("Email: " + email);
-        System.out.println("hasASteal: " + hasASteal);
-        System.out.println("hasPoint: " + hasPoint);
-        System.out.println("eldestAsix: " + eldestAsix);
-        System.out.println("atIndex: " + atIndex);
-        System.out.println("dotIndex: " + dotIndex);
-        System.out.println("correctOrder: " + correctOrder);
-        System.out.println("noSpaces: " + noSpaces);
-        System.out.println("singleAt: " + singleAt);
-        System.out.println("email.length(): " + email.length());
-        System.out.println("dotIndex < email.length() - 2: " + (dotIndex < email.length() - 2));
-
         // Valida que cumpla con todas las validaciones
         boolean isValid = hasASteal && hasPoint && eldestAsix && correctOrder && noSpaces && singleAt;
 
